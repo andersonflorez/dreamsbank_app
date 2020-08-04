@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Crear transaccion</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="createTransaction(form)" id="container">
+    <ion-grid>
+      <ion-row class="ion-padding-horizontal">
+        <ion-text color="dark">
+          <h6>{{product.name}} - {{product.number}}</h6>
+        </ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div padding>
+            <ion-item>
+              <ion-input
+                name="commerce"
+                type="text"
+                placeholder="Comercio"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                name="amount"
+                type="text"
+                placeholder="Monto"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Estado</ion-label>
+              <ion-select
+                ngModel
+                name="state"
+                required
+                okText="Aceptar"
+                cancelText="Cancelar"
+              >
+                <ion-select-option value="Pendiente"
+                  >Pendiente</ion-select-option
+                >
+                <ion-select-option value="Activo">Activo</ion-select-option>
+                <ion-select-option value="Inactivo">Inactivo</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button
+              class="ion-margin"
+              size="large"
+              type="submit"
+              [disabled]="form.invalid"
+              expand="block"
+              >Crear</ion-button
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

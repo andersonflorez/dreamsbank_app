@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
-      Blank
+      Productos
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="start" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <!-- List of Text Items -->
+  <ion-list lines="full">
+    <ion-item
+      button
+      (click)="createTransaction(product)"
+      *ngFor="let product of products; let i=index"
+    >
+      <ion-label>
+        <h2>{{product.name}}</h2>
+        <h3>{{product.number}}</h3>
+        <p>{{product.created_at}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
